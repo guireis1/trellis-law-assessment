@@ -1,0 +1,69 @@
+[tool.poetry]
+name = "Trellis Law Assessment"
+version = "0.1.0"
+description = "Number to English"
+authors = ["Guilherme Reis <guilhermereismende@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.9"
+uvicorn = "^0.20.0"
+fastapi = "^0.92.0"
+gunicorn = "^20.1.0"
+fastapi-event = "^0.1.3"
+pydantic = "^1.10.5"
+black = "^23.1.0"
+pylint = "^2.16.2"
+pytest = "^7.2.1"
+httpx = "^0.23.3"
+pytest-asyncio = "^0.20.3"
+python-dotenv = "^1.0.1"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.13.2"
+mypy = "^1.8.0"
+flake8 = "^6.1.0"
+bandit = "^1.7.6"
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  \.toml
+  |\.sh
+  |\.yaml
+  |\.yml
+  |\.git
+  |\.ini
+  |Dockerfile
+  |Jenkinfile
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ['tests']
+
+[tool.coverage.run]
+source = ['fastapi_skeleton']
+branch = true
+
+[tool.coverage.report]
+fail_under = 90
+precision = 2
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = false
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
